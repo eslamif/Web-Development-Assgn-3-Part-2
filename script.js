@@ -53,7 +53,7 @@ function searchGist() {
 					for(var j = 0; j < lanFilter.length; j++) {								//filter based on user language preferences
 						if(lanFilter[j] == oneFile.language) {
 							resultDescription.push(resultAllParsed[i].description);			//save description
-							resultUrl.push(oneFile.raw_url);								//save url
+							resultUrl.push(resultAllParsed[i].html_url);					//save url
 						}
 					}
 				}				
