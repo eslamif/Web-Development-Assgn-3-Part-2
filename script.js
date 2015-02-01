@@ -34,7 +34,11 @@ function searchGist() {
 	if(document.getElementsByName("text")[0].checked)
 		lanFilter.push("Text");			
 	
+	//Get Gists from Github
+	httpRequest.open("GET", "https://api.github.com/gists/public", true);
+	httpRequest.send();	
 	
+	//Store Gists from Github
 	httpRequest.onreadystatechange = function() {
 		if(httpRequest.readyState == 4) {
 			
@@ -90,8 +94,7 @@ function searchGist() {
 		}
 	}
 	
-	httpRequest.open("GET", "https://api.github.com/gists/public", true);
-	httpRequest.send();
+
 
 	
 }
