@@ -18,14 +18,52 @@ function searchGist() {
 		if(httpRequest.readyState == 4) {
 			//Store git results from Github
 			var resultAllParsed = JSON.parse(httpRequest.responseText);
+			var lanFilter = []
 			var resultDescription = [];
 			var resultHtmlUrl = [];
 			
-			for(var i = 0; i < resultAllParsed.length; i++) {
-				resultDescription[i] = resultAllParsed[i].description;
-				resultHtmlUrl[i] = resultAllParsed[i].html_url;
+			//Determine which language box the user checked
+			if(document.getElementsByName("python")[0].checked)
+				lanFilter.push("python");
+			
+			if(document.getElementsByName("json")[0].checked)
+				lanFilter.push("json");
+			
+			if(document.getElementsByName("javascript")[0].checked)
+				lanFilter.push("javascript");
+			
+			if(document.getElementsByName("sql")[0].checked)
+				lanFilter.push("sql");			
+			
+			if(document.getElementsByName("text")[0].checked)
+				lanFilter.push("Text");				
+			
+			
+			//TEST TEST - lanFilter was successfully stored? YES YES
+			for(var i = 0; i < lanFilter.length; i++) {
+				console.log("lanFilter saved successfully? " + lanFilter[i]);
 			}
 			
+			
+			//Filter results by language box preferences
+			for(var i = 0; i < resultAllParsed.length; i++) {
+				for(var j = 0; j < lanFilter.length; j++) {
+					console.log("resultAllParsed.language = " + resultAllParsed[i].language);
+					console.log("lanFilter = " + lanFilter[j]);
+					if(resultAllParsed[i].language == lanFilter[j]) {
+						resultDescription.push(resultAllParsed[i].description);
+						resultHtmlUrl.push(resultAllParsed[i].html_url);
+					}
+				}
+			}
+			
+			//TEST TEST - resultDescription filled correctly?
+			console.log("Length of resultDescription = " + resultDescription.length);
+			for(var i = 0; i < resultDescription.length; i++) {
+				console.log("resultDescription saved successfully?" + resultDescription[i]);
+			}			
+			
+
 			//Display Gist Results as list items	
 			var ul = document.getElementById('gistResults').appendChild(document.createElement("ul"));
 			var li;

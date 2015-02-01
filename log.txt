@@ -7,6 +7,11 @@ ________________________________________________________
 
 
 ************** PART 2 **************
+
+Start: SAT, 31 Jan 2015 23:20:40 -0800
+End: SUN, 01 FEB 2015 01:24:13 -0800
+Tasks: Completed checkbox implementation. Worked on filtering gist results, but WIP.
+
 Start: SAT, 31 Jan 2015 18:01:22 -0800
 End: SAT, 31 Jan 2015 22:27:01 -0800
 Tasks: Successfully listed gist pulls as list items

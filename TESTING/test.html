@@ -1,13 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta charset='UTF-8'>
+		<meta charset="UTF-8">
 		<title>TESTING</title>
 		<script src='test.js'></script>
 	</head>
 	<body>
-		<h2>This is a header</h2>
-		<div id="output"></div>
+		<h2>Ajax Assignment</h2>
+		<form>
+			<input type="text" name="pageNumber"> Number of pages to return (30 results per page).
+			<br>
+			<input type="checkbox" name="python" value="Python"> Python
+			<input type="checkbox" name="json" value="JSON,"> JSON
+			<input type="checkbox" name="javascript" value="JAVASCRIPT"> JavaScript
+			<input type="checkbox" name="sql" value="SQL"> SQL
+			<input type="checkbox" name="text" value="TEXT"> Text
+			<br>
+		</form>
+		
+		<input type="button" name="GistSearch" value="Search" onclick="searchGist()">
+		
+		<div id="gistResults"></div>
 	</body>
 </html>
-
