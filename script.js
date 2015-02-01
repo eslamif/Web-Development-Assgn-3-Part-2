@@ -14,31 +14,34 @@ function searchGist() {
 		throw 'Unable to create HttpRequest.';
 	}	
 
+	var lanFilter = []
+	var resultDescription = [];
+	var resultUrl = [];
+
+	//Determine which language box the user checked
+	if(document.getElementsByName("python")[0].checked)
+		lanFilter.push("Python");
+	
+	if(document.getElementsByName("json")[0].checked)
+		lanFilter.push("JSON");
+	
+	if(document.getElementsByName("javascript")[0].checked)
+		lanFilter.push("JavaScript");
+	
+	if(document.getElementsByName("sql")[0].checked)
+		lanFilter.push("SQL");			
+	
+	if(document.getElementsByName("text")[0].checked)
+		lanFilter.push("Text");			
+	
+	
 	httpRequest.onreadystatechange = function() {
 		if(httpRequest.readyState == 4) {
+			
 			//Store git results from Github
 			var resultAllParsed = JSON.parse(httpRequest.responseText);
-			var lanFilter = []
-			var resultDescription = [];
-			var resultUrl = [];
 			
-			//Determine which language box the user checked
-			if(document.getElementsByName("python")[0].checked)
-				lanFilter.push("Python");
-			
-			if(document.getElementsByName("json")[0].checked)
-				lanFilter.push("JSON");
-			
-			if(document.getElementsByName("javascript")[0].checked)
-				lanFilter.push("JavaScript");
-			
-			if(document.getElementsByName("sql")[0].checked)
-				lanFilter.push("SQL");			
-			
-			if(document.getElementsByName("text")[0].checked)
-				lanFilter.push("Text");				
-			
-			
+
 			/*
 			//TEST TEST - lanFilter was successfully stored? YES YES
 			for(var i = 0; i < lanFilter.length; i++) {
