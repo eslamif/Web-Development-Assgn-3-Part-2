@@ -38,10 +38,10 @@ function searchGist() {
 	//Obtain Gists based on user's page number preference
 	var numPages = document.getElementById("pageNumber").value;									//user's page number
 	console.log("user page number = " + numPages);												//TEST - USER'S PAGE NUMBER INPUT
-	for(var pageNum = 1; pageNum < (numPages + 1); pageNum++) {
+	for(var pageNum = 1; pageNum < (parseInt(numPages, 10) + 1); pageNum++) {
 		console.log("current page number = " + pageNum);										//TEST - CURRENT PAGE NUMBER ITERATION (SHOULD NOT EXCEED USER'S INPUT!)
-		//httpRequest.open("GET", "https://api.github.com/gists/public?page=pageNum", true);	//commented to prevent lockout
-		//httpRequest.send();																	//commented to prevent lockout
+		httpRequest.open("GET", "https://api.github.com/gists/public?page=pageNum", true);	//commented to prevent lockout
+		httpRequest.send();																	//commented to prevent lockout
 		
 		//Store Gists from Github
 		httpRequest.onreadystatechange = function() {
