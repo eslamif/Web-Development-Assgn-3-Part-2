@@ -20,49 +20,52 @@ function searchGist() {
 			var resultAllParsed = JSON.parse(httpRequest.responseText);
 			var lanFilter = []
 			var resultDescription = [];
-			var resultHtmlUrl = [];
+			var resultUrl = [];
 			
 			//Determine which language box the user checked
 			if(document.getElementsByName("python")[0].checked)
-				lanFilter.push("python");
+				lanFilter.push("Python");
 			
 			if(document.getElementsByName("json")[0].checked)
-				lanFilter.push("json");
+				lanFilter.push("JSON");
 			
 			if(document.getElementsByName("javascript")[0].checked)
-				lanFilter.push("javascript");
+				lanFilter.push("JavaScript");
 			
 			if(document.getElementsByName("sql")[0].checked)
-				lanFilter.push("sql");			
+				lanFilter.push("SQL");			
 			
 			if(document.getElementsByName("text")[0].checked)
 				lanFilter.push("Text");				
 			
 			
+			/*
 			//TEST TEST - lanFilter was successfully stored? YES YES
 			for(var i = 0; i < lanFilter.length; i++) {
 				console.log("lanFilter saved successfully? " + lanFilter[i]);
 			}
+			*/
 			
-			
-			//Filter results by language box preferences
+			//Filter results by user language preferences
 			for(var i = 0; i < resultAllParsed.length; i++) {
-				for(var j = 0; j < lanFilter.length; j++) {
-					console.log("resultAllParsed.language = " + resultAllParsed[i].language);
-					console.log("lanFilter = " + lanFilter[j]);
-					if(resultAllParsed[i].language == lanFilter[j]) {
-						resultDescription.push(resultAllParsed[i].description);
-						resultHtmlUrl.push(resultAllParsed[i].html_url);
+				for(var fileName in resultAllParsed[i].files) {								//files = object in resultAllParsed				
+					var oneFile = resultAllParsed[i].files[fileName];						//access properties of files object
+					for(var j = 0; j < lanFilter.length; j++) {								//filter based on user language preferences
+						if(lanFilter[j] == oneFile.language) {
+							resultDescription.push(resultAllParsed[i].description);			//save description
+							resultUrl.push(oneFile.raw_url);								//save url
+						}
 					}
-				}
+				}				
 			}
-			
-			//TEST TEST - resultDescription filled correctly?
-			console.log("Length of resultDescription = " + resultDescription.length);
+				
+			/*
+			//TEST TEST - filtered and saved correctly? YES YES
 			for(var i = 0; i < resultDescription.length; i++) {
-				console.log("resultDescription saved successfully?" + resultDescription[i]);
-			}			
-			
+				console.log(resultDescription[i]);
+				console.log(resultUrl[i]);					
+			}
+			*/
 
 			//Display Gist Results as list items	
 			var ul = document.getElementById('gistResults').appendChild(document.createElement("ul"));

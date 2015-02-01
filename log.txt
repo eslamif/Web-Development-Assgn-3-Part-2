@@ -8,6 +8,10 @@ ________________________________________________________
 
 ************** PART 2 **************
 
+Start: SUN, 01 FEB 2015 10:05:33 -0800
+End: SUN, 01 FEB 2015 11:55:45 -0800
+Tasks: Implemented language filtering.
+
 Start: SAT, 31 Jan 2015 23:20:40 -0800
 End: SUN, 01 FEB 2015 01:24:13 -0800
 Tasks: Completed checkbox implementation. Worked on filtering gist results, but WIP.
