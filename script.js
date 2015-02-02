@@ -117,7 +117,9 @@ function searchGist() {
 					fav.appendChild(text);
 					li.appendChild(fav);
 					ul.appendChild(li);	
-					
+					fav.onclick = function() {
+						console.log(li.innerHTML);
+					}
 
 				}			
 			}
