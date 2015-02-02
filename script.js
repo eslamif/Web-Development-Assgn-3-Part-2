@@ -108,7 +108,6 @@ function searchGist() {
 				for(var i = 0; i < resultDescription.length; i++) {
 					li = document.createElement("li");
 					li.innerHTML = resultDescription[i];
-					li.
 					ul.appendChild(li);	
 				}			
 			}
