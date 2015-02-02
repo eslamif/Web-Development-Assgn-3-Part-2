@@ -10,7 +10,10 @@ function initVars() {
 	
 	for(pages = 0; pages < userPageInput; pages++) {
 		searchGist();
+		
+
 	}	
+
 }
 
 function searchGist() {
@@ -54,7 +57,6 @@ function searchGist() {
 	httpRequest.onreadystatechange = function() {
 		if(httpRequest.readyState == 4) {
 			var resultAllParsed = JSON.parse(httpRequest.responseText);
-			
 			/*
 			//TEST TEST - lanFilter was successfully stored? YES YES
 			for(var i = 0; i < lanFilter.length; i++) {
@@ -82,23 +84,35 @@ function searchGist() {
 				console.log(resultUrl[i]);					
 			}
 			*/
+		
+			/* resultDescription duplicates pages
+			console.log(resultDescription.length);
+			console.log(pages);
+			console.log(userPageInput);
+			*/
 
-			//Display Gist Results as list items	
-			var ul = document.getElementById('gistResults').appendChild(document.createElement("ul"));
-			var li;
-			
-			for(var i = 0; i < resultDescription.length; i++) {
-				li = document.createElement("li");
-				li.innerHTML = resultDescription[i];
-				ul.appendChild(li);	
-			}
-
+			//TEST TEST
+			//console.log("Inner resultDescription = " + resultDescription.length);
+		
 			/*
 			//Save to local storage
 			localStorage.setItem("test", resultAllParsed[0].description);
 			console.log(localStorage.getItem("test"));
 			*/
+		
+			if(pages == userPageInput) {
+				//Display Gist Results as list items	
+				var ul = document.getElementById('gistResults').appendChild(document.createElement("ul"));
+				var li;
+				
+				for(var i = 0; i < resultDescription.length; i++) {
+					li = document.createElement("li");
+					li.innerHTML = resultDescription[i];
+					li.
+					ul.appendChild(li);	
+				}			
+			}
 		}
 	}
-
 }
+
