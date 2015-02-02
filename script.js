@@ -8,12 +8,15 @@ function initVars() {
 	resultUrl = [];
 	userPageInput = document.getElementById("pageNumber").value;
 	
-	for(pages = 0; pages < userPageInput; pages++) {
-		searchGist();
-		
-
+	//Validate user pages input
+	if(userPageInput > 5) {
+		alert("Please enter 5 or less pages. Refresh page and try again");
 	}	
-
+	else if(userPageInput <= 5) {
+		for(pages = 0; pages < userPageInput; pages++) {
+			searchGist();
+		}		
+	}
 }
 
 function searchGist() {
@@ -108,7 +111,14 @@ function searchGist() {
 				for(var i = 0; i < resultDescription.length; i++) {
 					li = document.createElement("li");
 					li.innerHTML = resultDescription[i];
+					//Add favorite button
+					var fav = document.createElement("button");
+					var text = document.createTextNode("Favorite");
+					fav.appendChild(text);
+					li.appendChild(fav);
 					ul.appendChild(li);	
+					
+
 				}			
 			}
 		}
